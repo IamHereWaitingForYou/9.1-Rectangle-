@@ -3,51 +3,62 @@
 using namespace std;
 int main()
 {
-	int a[100],b[100],c[1000];
-	int n;
+	int a[100],b[100];
+	int n,q=100;
+	int k=0;
 	int count1=0;
 	int count2=0;
+	int count3=0;
+	int count4=0; 
+	while(true)
+	{
 	cin>>n;
-	a[n]=0;
-	b[n]=0;
-	//while(n--)
-	//{
-		int k=0;
+	if(n==0)
+	return 0;
+	k=0;
+	count1=0;
+	count2=0;
+	count3=0;
+ 	count4=0; 
 		for(int i=0;i<n;i++)
 			cin>>a[i];
-		for(int i=0;i<n;i++)
-			cin>>b[i];
+		for(int j=0;j<n;j++)
+			cin>>b[j];
 		sort(a,a+n);
 		sort(b,b+n);
-	for(int i=k;i<n;i++)
+		
+	for(int i=0	;i<n;i++)
 	{
 
-		for(int j=i;j<=n;j++)//king's speed
+		for(int j=k;j<n;j++)
 		{
-			if(a[i]>b[j])//Ìï¼ÉÄÜÓ®
+			if(a[i]>b[j])
 			{ 
-			//cout<<k<<endl;
-			count1++;
-			continue; 
+				count1++;
+				k=j+1;
+				continue; 
 			}
-			else if(a[i]<b[j]&&b[j]==0)
+			else if(a[i]<b[j])
 			{
-			count2++;
-			continue;
+				if(q!=i)
+				{
+					count2=0;
+					q=i;
+				}
+				count2++;	
+				if(count2==n-count1)
+				{
+					cout<<count1<<" "<<count2<<" "<<n-count1<<endl;
+					count3++;
+					count2=0;
+
+				 }	
 			}
-			//k++;
 		}
+	
 	}
-		cout<<count1<<" "<<count2<<endl;
-		if(count1<=count2)
-		{
-			
-			cout<<0<<endl;
-		}
-		else if (count1>count2)
-		cout<<(count1-count2)*200<<endl;
-		
-		
-	//}
+		cout<<count1<<" "<<count2<<" "<<count3<<endl; 
+		cout<<(count1-count3)*200<<endl;
+	}
 	return 0;
 }

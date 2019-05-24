@@ -1,0 +1,45 @@
+#include<iostream>
+#include<string>
+#include<cstring>
+using namespace std;
+int bin2Dec(const string &binaryString)
+{
+  int i, j;
+  int mask = 0;
+  int size = (int)strlen(binaryString.c_str());
+  for(i = 0, j = 0; j < size; i++)
+  {
+    if(binaryString[i] == '1')
+    {
+      mask |= (1 << (size-1-j));
+      j++;
+    }
+    else if(binaryString[i] == '0')
+      j++;
+ 
+  }
+
+ return mask;
+}
+
+int main()
+{
+	char a[10000];
+	cin>>a;
+	try
+	{
+		int count=0;
+	for(unsigned i=0;i<strlen(a);i++)
+	if(a[i]!='0'&&a[i]!='1')
+		count=i+1;
+		if(count>0)
+		throw a[count-1];
+	cout<<bin2Dec(a)<<endl;
+	} 
+	catch(char ch)
+	{
+		cout<<"Expection: "<<ch<<" does not a bin"<<endl;
+	}
+
+	return 0;
+} 

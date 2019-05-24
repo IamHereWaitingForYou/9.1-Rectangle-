@@ -1,0 +1,52 @@
+#include<iostream>
+#include<string>
+#include<cctype> 
+using namespace std;
+int hexChartoDec(char ch)
+{
+	ch=toupper(ch);
+	if(ch>='A'&&ch<='F')
+	return 10+ch-'A';
+	else 
+	return ch-'0';
+}
+int hexDec(const string&hex)
+{
+	int dec =0;
+	for(unsigned i =0;i<hex.size();i++)
+	{
+		dec=dec*16+ hexChartoDec(hex[i]);	
+	}	
+	return dec;
+} 
+
+int main()
+{
+	cout<<"hex"<<endl;
+	string hex;
+	cin>>hex;
+	try
+	{
+	
+	int count=0;
+	for(int i=0;i<hex.size();i++)
+	{
+	if(hex[i]<'0'||((hex[i]>'9')&&(hex[i]<'A'))
+	||((hex[i]>'G')&&(hex[i]<'a'))||(hex[i]>'g'))
+	{
+	count=i+1;
+	break;
+	}
+	if(count>0)
+	break;
+	}
+	if(count>0)
+	throw hex[count-1];	
+	cout<<hexDec(hex);	
+	}
+	catch(char ex)
+	{
+		cout<<"Expection: invalid_agrument"<<endl;
+	}
+	return 0;
+} 

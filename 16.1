@@ -33,20 +33,12 @@ int main()
 	{
 	if(hex[i]<'0'||((hex[i]>'9')&&(hex[i]<'A'))
 	||((hex[i]>'G')&&(hex[i]<'a'))||(hex[i]>'g'))
+	throw invalid_argument("Expection: invalid_agrument");
+
+	}
+	catch(invalid_argument & ex)
 	{
-	count=i+1;
-	break;
-	}
-	if(count>0)
-	break;
-	}
-	if(count>0)
-	throw hex[count-1];	
-	cout<<hexDec(hex);	
-	}
-	catch(char ex)
-	{
-		cout<<"Expection: invalid_agrument"<<endl;
+		cout << ex.what() << endl;
 	}
 	return 0;
 } 
